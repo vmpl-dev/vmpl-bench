@@ -1,0 +1,30 @@
+[submodule "syscall_benchmark"]
+	path = bench/syscall_benchmark
+	url = git@github.com:saadislamm/syscall_benchmark.git
+[submodule "ipc-bench"]
+	path = bench/ipc-bench
+	url = git@github.com:rigtorp/ipc-bench.git
+[submodule "nbench"]
+	path = bench/nbench
+	url = git@github.com:toshsan/nbench.git
+[submodule "byte-unixbench"]
+	path = bench/unixbench
+	url = git@github.com:kdlucas/byte-unixbench.git
+[submodule "lmbench"]
+	path = bench/lmbench
+	url = git@github.com:intel/lmbench.git
+[submodule "tls-perf"]
+	path = bench/tls-perf
+	url = git@github.com:tempesta-tech/tls-perf.git
+[submodule "lighttpd1.4"]
+	path = apps/lighttpd
+	url = git@github.com:lighttpd/lighttpd1.4.git
+[submodule "nginx"]
+	path = apps/nginx
+	url = git@github.com:nginx/nginx.git
+[submodule "proftpd"]
+	path = apps/proftpd
+	url = git@github.com:proftpd/proftpd.git
+[submodule "libc-bench"]
+	path = bench/libc-bench
+	url = git://git.musl-libc.org/libc-bench
