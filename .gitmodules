@@ -43,3 +43,6 @@
 [submodule "apps/sqlite-bench"]
 	path = apps/sqlite-bench
 	url = git@github.com:ukontainer/sqlite-bench.git
+[submodule "bench/spec/spec_on_ubuntu_xenial"]
+	path = bench/spec/spec_on_ubuntu_xenial
+	url = git@github.com:sjp38/spec_on_ubuntu_xenial.git

@@ -59,6 +59,16 @@ CC=musl-gcc ./configure --prefix=/usr/local/musl
 make install -j128
 ```
 
+### jemalloc
+
+```bash
+wget https://github.com/jemalloc/jemalloc/releases/download/5.3.0/jemalloc-5.3.0.tar.bz2
+tar -xvf jemalloc-5.3.0.tar.bz2
+cd jemalloc-5.3.0
+CC=musl-gcc ./configure --prefix=/usr/local/musl --disable-cxx
+make install -j128
+```
+
 ## Docker Test
 
 ### Build docker image
