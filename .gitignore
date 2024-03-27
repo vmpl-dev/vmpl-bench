@@ -1,0 +1,33 @@
+*.cmd
+*.symvers
+*.order
+*.o
+*.d
+*.dat
+*.txt
+.dirstamp
+.deps
+.libs
+.history
+aclocal.m4
+ar-lib
+autom4te.cache
+*.log.*
+config.*
+depcomp
+install-sh
+ltmain.sh
+missing
+stamp-h1
+configure
+configure~
+configure.scan
+compile
+Makefile
+Makefile.in
+# line-counter
+out
+# vscode
+.vscode
+.history
+debian

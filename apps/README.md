@@ -8,6 +8,12 @@
 rsync -avzP /usr/local/musl/ amd-guest:/usr/local/musl/
 ```
 
+## apache httpd
+
+```bash
+./scripts/build-httpd.sh
+```
+
 ## lighttpd
 
 ```bash
@@ -104,7 +110,7 @@ memcached-benchmark -h
 
 ```bash
 # 启动nginx
-sudo ./run-app.sh --dunify ./dunify.so --run /usr/local/muslbin/nginx -c /usr/local/musl/etc/nginx/nginx.conf
+sudo ./run-app.sh --dunify ./dunify.so --run /usr/local/musl/bin/nginx -c /usr/local/musl/etc/nginx/nginx.conf
 # 测试nginx
 ab -n 100000 -c 1000 http://localhost:8080/
 ```

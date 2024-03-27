@@ -1,16 +1,8 @@
 #!/bin/bash
 
-export MUSL_HOME=/usr/local/musl
-export PATH=$MUSL_HOME/bin:$PATH
-export LD_LIBRARY_PATH=$MUSL_HOME/lib:$LD_LIBRARY_PATH
+source $BENCH_HOME/scripts/common.sh
 
-export VMPL_LOG_LEVEL=info
-export VMPL_LOG_SHOW_TIME=true
-
-export VMPL_ENABLED=0
-export RUN_IN_VMPL=0
-export RUN_IN_USER_MODE=1
-export RUN_IN_VMPL_PROCESS=1
+echo "Running IPC benchmark..."
 
 # Test IPC performance
 pushd ipc-bench/build || exit

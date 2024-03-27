@@ -2,6 +2,11 @@
 
 ## Benchmarking tools
 
+```bash
+# Install the benchmarking tools
+export BENCH_HOME=~/vmpl-process/vmpl-bench
+```
+
 ## Real-world applications
 
 ### libuv-v1.48.0

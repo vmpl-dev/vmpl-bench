@@ -1,5 +1,5 @@
 [submodule "syscall_benchmark"]
-	path = bench/syscall_benchmark
+	path = bench/syscall/syscall_benchmark
 	url = git@github.com:saadislamm/syscall_benchmark.git
 [submodule "ipc-bench"]
 	path = bench/ipc-bench
@@ -28,3 +28,18 @@
 [submodule "libc-bench"]
 	path = bench/libc-bench
 	url = git://git.musl-libc.org/libc-bench
+[submodule "bench/spec-int-2006"]
+	path = bench/spec/spec-int-2006
+	url = git@github.com:snake0/spec-int-2006.git
+[submodule "bench/speccpu2006"]
+	path = bench/spec/speccpu2006
+	url = git@github.com:hubzhangxj/speccpu2006.git
+[submodule "bench/sysbench"]
+	path = bench/sysbench
+	url = git@github.com:akopytov/sysbench.git
+[submodule "apps/httpd"]
+	path = apps/httpd
+	url = git@github.com:apache/httpd.git
+[submodule "apps/sqlite-bench"]
+	path = apps/sqlite-bench
+	url = git@github.com:ukontainer/sqlite-bench.git
