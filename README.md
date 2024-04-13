@@ -59,6 +59,14 @@ CC=musl-gcc ./configure --prefix=/usr/local/musl
 make install -j128
 ```
 
+### libutf
+
+```bash
+git clone git@github.com:cls/libutf.git
+cd libutf
+make all CC=musl-gcc PREFIX=/usr/local/musl install
+```
+
 ### jemalloc
 
 ```bash

@@ -85,6 +85,12 @@ redis-benchmark -h
 
 ## memcached
 
+> 编译出问题了，因为没有完整的sysroot，所以编译的时候会报错，需要完整的sysroot
+
+```bash
+./scripts/build-memcached.sh
+```
+
 ### Memcached-1.6.9 Test
 
 启动memcached server on VM

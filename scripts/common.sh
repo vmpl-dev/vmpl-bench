@@ -14,21 +14,37 @@ export VMPL_LOG_LEVEL=info
 export VMPL_LOG_SHOW_TIME=true
 
 vmpl_user_mode=0
-hotcalls_mode=0
+hotcalls_config_file=""
+strace_enabled=0
+extra_args=""
 # parse arguments
-while getopts "v:h" opt; do
-    case ${opt} in
-        v )
-        vmpl_user_mode=$OPTARG
-        ;;
-        h )
-        hotcalls_mode=1
-        ;;
-        \? )
-        echo "Usage: cmd [-v vmpl_user_mode] [-h hotcalls_mode]"
-        ;;
+while (( "$#" )); do
+    case "$1" in
+        --vmpl|-v)
+            vmpl_user_mode=1
+            shift 1
+            ;;
+        --hotcalls|-h)
+            hotcalls_config_file=$2
+            shift 2
+            ;;
+        --strace|-t)
+            strace_enabled=1
+            shift 1
+            ;;
+        --extra_args|-e)
+            shift
+            extra_args=$@
+            break
+            ;;
+        *)
+            echo "Usage: $0 [--vmpl] [--hotcalls <config_file>] [--strace] [--extra_args <args>]"
+            exit 1
+            ;;
     esac
 done
+
+echo "Running with extra arguments: $extra_args"
 
 if [ $vmpl_user_mode -eq 1 ]; then
     export VMPL_ENABLED=1
@@ -45,6 +61,7 @@ else
     echo "Running in native mode..."
 fi
 
-if [ $hotcalls_mode -eq 1 ]; then
-    export HOTCALLS_ENABLED=1
+if [ ! -z $hotcalls_config_file ]; then
+    export HOTCALLS_CONFIG_FILE=$hotcalls_config_file
+    echo "Running in hotcalls mode..."
 fi

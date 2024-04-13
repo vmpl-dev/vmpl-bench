@@ -46,3 +46,6 @@
 [submodule "bench/spec/spec_on_ubuntu_xenial"]
 	path = bench/spec/spec_on_ubuntu_xenial
 	url = git@github.com:sjp38/spec_on_ubuntu_xenial.git
+[submodule "apps/memcached"]
+	path = apps/memcached
+	url = git@github.com:memcached/memcached.git

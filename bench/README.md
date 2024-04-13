@@ -178,6 +178,20 @@ benshan@sev-snp-guest:~/vmpl-bench/bench/nbench$
 ```bash
 # 运行
 
+# trace nbench with trace-cmd and report the kvm_exit events
+$ sudo ./scripts/trace-kvm.sh --report
+ qemu-system-x86-310143 [064] 28714.545983: kvm_exit:             reason EXIT_NPF rip 0x0 info 1680000007 1729a1000
+ qemu-system-x86-310143 [064] 28714.545985: kvm_exit:             reason EXIT_NPF rip 0x0 info 1680000007 1729a1000
+ qemu-system-x86-310143 [064] 28714.545987: kvm_exit:             reason EXIT_NPF rip 0x0 info 1680000007 1729a1000
+ qemu-system-x86-310143 [064] 28714.545989: kvm_exit:             reason EXIT_NPF rip 0x0 info 1680000007 1729a1000
+ qemu-system-x86-310143 [064] 28714.545991: kvm_exit:             reason EXIT_NPF rip 0x0 info 1680000007 1729a1000
+ qemu-system-x86-310143 [064] 28714.545994: kvm_exit:             reason EXIT_NPF rip 0x0 info 1680000007 1729a1000
+ qemu-system-x86-310143 [064] 28714.545995: kvm_exit:             reason EXIT_NPF rip 0x0 info 1680000007 1729a1000
+ qemu-system-x86-310143 [064] 28714.545998: kvm_exit:             reason EXIT_NPF rip 0x0 info 1680000007 1729a1000
+ qemu-system-x86-310143 [064] 28714.546000: kvm_exit:             reason EXIT_NPF rip 0x0 info 1680000007 1729a1000
+ qemu-system-x86-310143 [064] 28714.546002: kvm_exit:             reason EXIT_NPF rip 0x0 info 1680000007 1729a1000
+ qemu-system-x86^Ctrace-cmd: Received SIGINT
+benshan@public-Super-Server:~/vmpl-process$ 
 ```
 
 ## lmbench
