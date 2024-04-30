@@ -98,6 +98,41 @@ FLOATING-POINT INDEX: 41.963
 Baseline (LINUX)    : AMD K6/233*, 512 KB L2-cache, gcc 2.7.2.3, libc-5.4.38
 * Trademarks are property of their respective holder.
 benshan@public-Super-Server:~/vmpl-process/vmpl-bench/bench/nbench$
+benshan@public-Super-Server:~/vmpl-process/vmpl-bench/bench/nbench$ strace -o nbench.strace ./nbench 
+
+BYTEmark* Native Mode Benchmark ver. 2 (10/95)
+Index-split by Andrew D. Balsa (11/97)
+Linux/Unix* port by Uwe F. Mayer (12/96,11/97)
+
+TEST                : Iterations/sec.  : Old Index   : New Index
+                    :                  : Pentium 90* : AMD K6/233*
+--------------------:------------------:-------------:------------
+NUMERIC SORT        :          1092.5  :      28.02  :       9.20
+STRING SORT         :          205.86  :      91.98  :      14.24
+BITFIELD            :      4.9909e+08  :      85.61  :      17.88
+FP EMULATION        :          96.801  :      46.45  :      10.72
+FOURIER             :       1.681e+05  :     191.18  :     107.38
+ASSIGNMENT          :          25.039  :      95.28  :      24.71
+IDEA                :           11537  :     176.45  :      52.39
+HUFFMAN             :          3080.1  :      85.41  :      27.27
+NEURAL NET          :          30.901  :      49.64  :      20.88
+LU DECOMPOSITION    :          821.61  :      42.56  :      30.74
+==========================ORIGINAL BYTEMARK RESULTS==========================
+INTEGER INDEX       : 76.052
+FLOATING-POINT INDEX: 73.918
+Baseline (MSDOS*)   : Pentium* 90, 256 KB L2-cache, Watcom* compiler 10.0
+==============================LINUX DATA BELOW===============================
+CPU                 : 128 CPU AuthenticAMD AMD EPYC 7543 32-Core Processor 1500MHz
+L2 Cache            : 512 KB
+OS                  : Linux 6.5.0-rc2-snp-host-ec25de0e7141
+C compiler          : musl-gcc
+libc                : 
+MEMORY INDEX        : 18.461
+INTEGER INDEX       : 19.375
+FLOATING-POINT INDEX: 40.998
+Baseline (LINUX)    : AMD K6/233*, 512 KB L2-cache, gcc 2.7.2.3, libc-5.4.38
+* Trademarks are property of their respective holder.
+benshan@public-Super-Server:~/vmpl-process/vmpl-bench/bench/nbench$ 
 benshan@public-Super-Server:~/vmpl-process/vmpl-bench/bench$ ./scripts/run-nbench.sh --extra_args DONUMSORT
 Running with extra arguments: DONUMSORT
 Running in native mode...
