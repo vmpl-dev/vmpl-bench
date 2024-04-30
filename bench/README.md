@@ -98,6 +98,39 @@ FLOATING-POINT INDEX: 41.963
 Baseline (LINUX)    : AMD K6/233*, 512 KB L2-cache, gcc 2.7.2.3, libc-5.4.38
 * Trademarks are property of their respective holder.
 benshan@public-Super-Server:~/vmpl-process/vmpl-bench/bench/nbench$
+benshan@public-Super-Server:~/vmpl-process/vmpl-bench/bench$ ./scripts/run-nbench.sh --extra_args DONUMSORT
+Running with extra arguments: DONUMSORT
+Running in native mode...
+Running nbench benchmark...
+~/vmpl-process/vmpl-bench/bench/nbench ~/vmpl-process/vmpl-bench/bench
+Running with extra arguments: DONUMSORT
+
+BYTEmark* Native Mode Benchmark ver. 2 (10/95)
+Index-split by Andrew D. Balsa (11/97)
+Linux/Unix* port by Uwe F. Mayer (12/96,11/97)
+
+============================== ALL STATISTICS ===============================
+**Date and time of benchmark run: Tue Apr 30 00:53:59 2024
+**Sizeof: char:1 short:2 int:4 long:8 u8:1 u16:2 u32:4 int32:4
+**System used for compilation:
+**Linux public-Super-Server 6.5.0-rc2-snp-host-ec25de0e7141 #2 SMP PREEMPT_DYNAM
+**C compiler: musl-gcc
+**libc: 
+**Date of compilation: 2024年 04月 30日 星期二 00:44:50 CST
+=============================================================================
+
+TEST                : Iterations/sec.  : Old Index   : New Index
+                    :                  : Pentium 90* : AMD K6/233*
+--------------------:------------------:-------------:------------
+NUMERIC SORT        :          1039.9  :      26.67  :       8.76
+  Absolute standard deviation: 41.0173
+  Relative standard deviation: 3.94443 %
+  Number of runs: 5
+  Number of arrays: 1
+  Array size: 8111
+Done with NUMERIC SORT    
+
+~/vmpl-process/vmpl-bench/bench
 benshan@sev-snp-guest:~/vmpl-bench/bench/nbench$ ./nbench
 
 BYTEmark* Native Mode Benchmark ver. 2 (10/95)
@@ -168,6 +201,110 @@ FLOATING-POINT INDEX: 40.456
 Baseline (LINUX)    : AMD K6/233*, 512 KB L2-cache, gcc 2.7.2.3, libc-5.4.38
 * Trademarks are property of their respective holder.
 benshan@sev-snp-guest:~/vmpl-bench/bench/nbench$ 
+benshan@sev-snp-guest:~/vmpl-bench/bench/nbench$ ./nbench -cNBENCH.CMD
+
+BYTEmark* Native Mode Benchmark ver. 2 (10/95)
+Index-split by Andrew D. Balsa (11/97)
+Linux/Unix* port by Uwe F. Mayer (12/96,11/97)
+
+TEST                : Iterations/sec.  : Old Index   : New Index
+                    :                  : Pentium 90* : AMD K6/233*
+--------------------:------------------:-------------:------------
+NUMERIC SORT        :          2246.7  :      57.62  :      18.92
+benshan@sev-snp-guest:~/vmpl-bench/bench/nbench$ 
+benshan@sev-snp-guest:~/vmpl-bench/bench/nbench$ ./nbench 
+
+BYTEmark* Native Mode Benchmark ver. 2 (10/95)
+Index-split by Andrew D. Balsa (11/97)
+Linux/Unix* port by Uwe F. Mayer (12/96,11/97)
+
+TEST                : Iterations/sec.  : Old Index   : New Index
+                    :                  : Pentium 90* : AMD K6/233*
+--------------------:------------------:-------------:------------
+NUMERIC SORT        :          2245.1  :      57.58  :      18.91
+STRING SORT         :          247.37  :     110.53  :      17.11
+BITFIELD            :      1.0549e+09  :     180.95  :      37.80
+FP EMULATION        :          1084.7  :     520.47  :     120.10
+FOURIER             :      2.0733e+05  :     235.79  :     132.43
+ASSIGNMENT          :           74.41  :     283.14  :      73.44
+IDEA                :           16463  :     251.80  :      74.76
+HUFFMAN             :           10648  :     295.28  :      94.29
+NEURAL NET          :          236.09  :     379.26  :     159.53
+LU DECOMPOSITION    :          4898.7  :     253.78  :     183.25
+==========================ORIGINAL BYTEMARK RESULTS==========================
+INTEGER INDEX       : 199.590
+FLOATING-POINT INDEX: 283.106
+Baseline (MSDOS*)   : Pentium* 90, 256 KB L2-cache, Watcom* compiler 10.0
+==============================LINUX DATA BELOW===============================
+C compiler          : musl-gcc
+libc                : 
+MEMORY INDEX        : 36.213
+INTEGER INDEX       : 63.255
+FLOATING-POINT INDEX: 157.024
+Baseline (LINUX)    : AMD K6/233*, 512 KB L2-cache, gcc 2.7.2.3, libc-5.4.38
+* Trademarks are property of their respective holder.
+benshan@sev-snp-guest:~/vmpl-bench/bench/nbench$ 
+benshan@sev-snp-guest:~/vmpl-bench/bench/nbench$ ./nbench 
+
+BYTEmark* Native Mode Benchmark ver. 2 (10/95)
+Index-split by Andrew D. Balsa (11/97)
+Linux/Unix* port by Uwe F. Mayer (12/96,11/97)
+
+TEST                : Iterations/sec.  : Old Index   : New Index
+                    :                  : Pentium 90* : AMD K6/233*
+--------------------:------------------:-------------:------------
+NUMERIC SORT        :          1095.3  :      28.09  :       9.23
+STRING SORT         :          200.61  :      89.64  :      13.87
+BITFIELD            :      4.8724e+08  :      83.58  :      17.46
+FP EMULATION        :          94.802  :      45.49  :      10.50
+FOURIER             :        1.66e+05  :     188.80  :     106.04
+ASSIGNMENT          :          24.508  :      93.26  :      24.19
+IDEA                :           11440  :     174.97  :      51.95
+HUFFMAN             :          2924.1  :      81.08  :      25.89
+NEURAL NET          :          30.603  :      49.16  :      20.68
+LU DECOMPOSITION    :          811.14  :      42.02  :      30.34
+==========================ORIGINAL BYTEMARK RESULTS==========================
+INTEGER INDEX       : 74.440
+FLOATING-POINT INDEX: 73.059
+Baseline (MSDOS*)   : Pentium* 90, 256 KB L2-cache, Watcom* compiler 10.0
+==============================LINUX DATA BELOW===============================
+CPU                 : 64 CPU AuthenticAMD AMD EPYC-v4 Processor 2800MHz
+L2 Cache            : 512 KB
+OS                  : Linux 6.5.0-snp-guest-525dfdeadc3a
+C compiler          : musl-gcc
+libc                : 
+MEMORY INDEX        : 18.027
+INTEGER INDEX       : 18.998
+FLOATING-POINT INDEX: 40.521
+Baseline (LINUX)    : AMD K6/233*, 512 KB L2-cache, gcc 2.7.2.3, libc-5.4.38
+* Trademarks are property of their respective holder.
+benshan@sev-snp-guest:~/vmpl-bench/bench/nbench$ 
+
+```
+
+```bash
+$ ./scripts/run-nbench.sh --vmpl --extra_args DONUMSORT
+...
+$ ./scripts/run-nbench.sh --vmpl --extra_args DOSTRINGSORT
+...
+$ ./scripts/run-nbench.sh --vmpl --extra_args DOBITFIELD
+...
+$ ./scripts/run-nbench.sh --vmpl --extra_args DOEMF
+...
+$ ./scripts/run-nbench.sh --vmpl --extra_args DOFOUR
+...
+$ ./scripts/run-nbench.sh --vmpl --extra_args DOASSIGN
+...
+$ ./scripts/run-nbench.sh --vmpl --extra_args DOIDEA
+...
+$ ./scripts/run-nbench.sh --vmpl --extra_args DOHUFF
+...
+$ ./scripts/run-nbench.sh --vmpl --extra_args DONNET
+...
+$ ./scripts/run-nbench.sh --vmpl --extra_args DOLU
+...
+$ ./scripts/run-nbench.sh --vmpl --hotcalls /home/benshan/hotcalls.conf --extra_args DOLU
+...
 ```
 
 ```bash
@@ -192,6 +329,43 @@ $ sudo ./scripts/trace-kvm.sh --report
  qemu-system-x86-310143 [064] 28714.546002: kvm_exit:             reason EXIT_NPF rip 0x0 info 1680000007 1729a1000
  qemu-system-x86^Ctrace-cmd: Received SIGINT
 benshan@public-Super-Server:~/vmpl-process$ 
+```
+
+## nbench-byte-2.2.3
+
+```bash
+benshan@sev-snp-guest:~/vmpl-bench/bench/nbench-byte-2.2.3$ ./nbench 
+
+BYTEmark* Native Mode Benchmark ver. 2 (10/95)
+Index-split by Andrew D. Balsa (11/97)
+Linux/Unix* port by Uwe F. Mayer (12/96,11/97)
+
+TEST                : Iterations/sec.  : Old Index   : New Index
+                    :                  : Pentium 90* : AMD K6/233*
+--------------------:------------------:-------------:------------
+NUMERIC SORT        :          2183.2  :      55.99  :      18.39
+STRING SORT         :          244.38  :     109.20  :      16.90
+BITFIELD            :      1.0502e+09  :     180.14  :      37.63
+FP EMULATION        :          1047.7  :     502.73  :     116.01
+FOURIER             :      1.9891e+05  :     226.23  :     127.06
+ASSIGNMENT          :          74.021  :     281.66  :      73.06
+IDEA                :           16882  :     258.20  :      76.66
+HUFFMAN             :           10364  :     287.39  :      91.77
+NEURAL NET          :          228.19  :     366.57  :     154.19
+LU DECOMPOSITION    :          4746.7  :     245.90  :     177.57
+==========================ORIGINAL BYTEMARK RESULTS==========================
+INTEGER INDEX       : 197.140
+FLOATING-POINT INDEX: 273.189
+Baseline (MSDOS*)   : Pentium* 90, 256 KB L2-cache, Watcom* compiler 10.0
+==============================LINUX DATA BELOW===============================
+C compiler          : musl-gcc
+libc                : 
+MEMORY INDEX        : 35.950
+INTEGER INDEX       : 62.241
+FLOATING-POINT INDEX: 151.523
+Baseline (LINUX)    : AMD K6/233*, 512 KB L2-cache, gcc 2.7.2.3, libc-5.4.38
+* Trademarks are property of their respective holder.
+benshan@sev-snp-guest:~/vmpl-bench/bench/nbench-byte-2.2.3$
 ```
 
 ## lmbench
@@ -221,4 +395,36 @@ grep -En 'fork|thread|mmap|brk' unixbench/UnixBench/src/*.{c,h}
 ```bash
 # 编译
 ./scripts/build-unixbench.sh
+```
+
+## seige
+
+[How to benchmark a website with the Siege command-line tool](https://www.techrepublic.com/article/how-to-benchmark-website-with-siege-command-line-tool/)
+
+```bash
+# 编译
+$ ./scripts/build-siege.sh
+```
+
+```bash
+# 运行
+$ ./scripts/run-siege.sh
+```
+
+## syscall_benchmark
+
+```bash
+benshan@sev-snp-guest:~$ syscall_benchmark
+Nothing.txt		133
+GetPid.txt		714
+GetUid.txt		687
+Read.txt		1272
+Write.txt		609
+Ioctl.txt		382
+Mmap.txt		2235
+Unmap.txt		5179
+PkeyAlloc.txt		610
+ClockGettime.txt		133
+Mincore.txt		1704
+Time.txt		134
 ```

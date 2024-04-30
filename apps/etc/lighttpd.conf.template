@@ -2,7 +2,7 @@
 ## Basic lighttpd configuration.
 ##
 server.document-root        = "/var/www/html"
-server.port                 = 8888
+server.port                 = 8000
 server.username             = "usrname"
 server.groupname            = "grpname"
 index-file.names            = ( "index.php", "index.html", "index.lighttpd.html" )
@@ -17,4 +17,6 @@ mimetype.assign             = (
   ".jpg"          =>      "image/jpeg",
   ".jpeg"         =>      "image/jpeg",
   ".png"          =>      "image/png",
+# make the default mime type application/octet-stream.
+  ""              =>      "application/octet-stream",
 )

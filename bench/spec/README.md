@@ -17,6 +17,9 @@ export SPEC_CPU2017=$SPEC_HOME/speccpu2017/cpu2017-1.0.5
 tar -zxvf spec2000-new.tar.gz
 # 2. 进入SPEC2000目录
 cd /home/benchmark/spec2000-new
+# 2.1
+export CC=musl-gcc
+./install.sh none
 # 3. 安装SPEC2000测试工具
 . shrc
 # 4. 进入测试工具目录

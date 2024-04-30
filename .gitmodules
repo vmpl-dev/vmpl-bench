@@ -49,3 +49,30 @@
 [submodule "apps/memcached"]
 	path = apps/memcached
 	url = git@github.com:memcached/memcached.git
+[submodule "apps/redis"]
+	path = apps/redis
+	url = git@github.com:redis/redis.git
+[submodule "apps/mbedtls"]
+	path = apps/mbedtls
+	url = git@github.com:Mbed-TLS/mbedtls.git
+[submodule "atc22-ae"]
+	path = atc22-ae
+	url = git@github.com:HyperEnclave/atc22-ae.git
+[submodule "apps/unqlite"]
+	path = apps/unqlite
+	url = git@github.com:symisc/unqlite.git
+[submodule "apps/wolfssl"]
+	path = apps/wolfssl
+	url = git@github.com:wolfSSL/wolfssl.git
+[submodule "apps/wolfssl-examples"]
+	path = apps/wolfssl-examples
+	url = git@github.com:wolfSSL/wolfssl-examples.git
+[submodule "bench/siege"]
+	path = bench/siege
+	url = git@github.com:JoeDog/siege.git
+[submodule "apps/beanstalkd"]
+	path = apps/beanstalkd
+	url = git@github.com:beanstalkd/beanstalkd.git
+[submodule "apps/spngt"]
+	path = apps/spngt
+	url = git@github.com:libspng/spngt.git
