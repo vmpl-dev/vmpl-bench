@@ -76,3 +76,6 @@
 [submodule "apps/spngt"]
 	path = apps/spngt
 	url = git@github.com:libspng/spngt.git
+[submodule "apps/SGX-OpenSSL"]
+	path = apps/SGX-OpenSSL
+	url = git@github.com:sparkly9399/SGX-OpenSSL.git

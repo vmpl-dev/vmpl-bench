@@ -1000,3 +1000,123 @@ SAKKE,1024,derive-4,3.038,329.126,
 Benchmark complete
 benshan@sev-snp-guest:~/vmpl-bench/apps/wolfssl$
 ```
+
+## GmSSL-master
+
+```bash
+mkdir build && cd build
+cmake .. -DCMAKE_C_COMPILER=musl-gcc -DCMAKE_INSTALL_PREFIX=/usr/local/musl -DENABLE_TEST_SPEED=ON
+make test
+make install -j128
+```
+
+```bash
+benshan@public-Super-Server:~/vmpl-process/vmpl-bench/apps/GmSSL/build$ make test
+Running tests...
+Test project /home/benshan/vmpl-process/vmpl-bench/apps/GmSSL/build
+      Start  1: sm4
+ 1/40 Test  #1: sm4 ..............................   Passed    1.38 sec
+      Start  2: sm4_cbc
+ 2/40 Test  #2: sm4_cbc ..........................   Passed    0.00 sec
+      Start  3: sm4_ctr
+ 3/40 Test  #3: sm4_ctr ..........................   Passed    0.00 sec
+      Start  4: sm4_gcm
+ 4/40 Test  #4: sm4_gcm ..........................   Passed    0.62 sec
+      Start  5: sm3
+ 5/40 Test  #5: sm3 ..............................   Passed    0.10 sec
+      Start  6: sm4_sm3_hmac
+ 6/40 Test  #6: sm4_sm3_hmac .....................   Passed    0.00 sec
+      Start  7: sm2_z256
+ 7/40 Test  #7: sm2_z256 .........................   Passed    0.00 sec
+      Start  8: sm2_key
+ 8/40 Test  #8: sm2_key ..........................   Passed    0.24 sec
+      Start  9: sm2_sign
+ 9/40 Test  #9: sm2_sign .........................   Passed    0.34 sec
+      Start 10: sm2_enc
+10/40 Test #10: sm2_enc ..........................   Passed    2.53 sec
+      Start 11: sm9
+11/40 Test #11: sm9 ..............................   Passed    1.96 sec
+      Start 12: zuc
+12/40 Test #12: zuc ..............................   Passed    0.15 sec
+      Start 13: hash_drbg
+13/40 Test #13: hash_drbg ........................   Passed    0.00 sec
+      Start 14: block_cipher
+14/40 Test #14: block_cipher .....................   Passed    0.00 sec
+      Start 15: digest
+15/40 Test #15: digest ...........................   Passed    0.00 sec
+      Start 16: hmac
+16/40 Test #16: hmac .............................   Passed    0.00 sec
+      Start 17: hkdf
+17/40 Test #17: hkdf .............................   Passed    0.00 sec
+      Start 18: gf128
+18/40 Test #18: gf128 ............................   Passed    0.00 sec
+      Start 19: ghash
+19/40 Test #19: ghash ............................   Passed    0.00 sec
+      Start 20: pkcs8
+20/40 Test #20: pkcs8 ............................   Passed    0.16 sec
+      Start 21: ec
+21/40 Test #21: ec ...............................   Passed    0.00 sec
+      Start 22: asn1
+22/40 Test #22: asn1 .............................   Passed    0.00 sec
+      Start 23: hex
+23/40 Test #23: hex ..............................   Passed    0.00 sec
+      Start 24: base64
+24/40 Test #24: base64 ...........................   Passed    0.00 sec
+      Start 25: pem
+25/40 Test #25: pem ..............................   Passed    0.00 sec
+      Start 26: x509
+26/40 Test #26: x509 .............................   Passed    0.01 sec
+      Start 27: x509_oid
+27/40 Test #27: x509_oid .........................   Passed    0.01 sec
+      Start 28: x509_alg
+28/40 Test #28: x509_alg .........................   Passed    0.01 sec
+      Start 29: x509_str
+29/40 Test #29: x509_str .........................   Passed    0.00 sec
+      Start 30: x509_ext
+30/40 Test #30: x509_ext .........................   Passed    0.01 sec
+      Start 31: x509_req
+31/40 Test #31: x509_req .........................   Passed    0.01 sec
+      Start 32: x509_crl
+32/40 Test #32: x509_crl .........................   Passed    0.00 sec
+      Start 33: cms
+33/40 Test #33: cms ..............................   Passed    0.03 sec
+      Start 34: tls
+34/40 Test #34: tls ..............................   Passed    0.00 sec
+      Start 35: tls13
+35/40 Test #35: tls13 ............................   Passed    0.00 sec
+      Start 36: sha224
+36/40 Test #36: sha224 ...........................   Passed    0.02 sec
+      Start 37: sha256
+37/40 Test #37: sha256 ...........................   Passed    0.02 sec
+      Start 38: sha384
+38/40 Test #38: sha384 ...........................   Passed    0.01 sec
+      Start 39: sha512
+39/40 Test #39: sha512 ...........................   Passed    0.02 sec
+      Start 40: aes
+40/40 Test #40: aes ..............................   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 40
+
+Total Test time (real) =   7.68 sec
+```
+
+```bash
+echo "Dropping caches"
+sync; echo 3 > /proc/sys/vm/drop_caches
+
+echo never | sudo tee >/sys/kernel/mm/transparent_hugepage/enabled
+echo never | sudo tee >/sys/kernel/mm/transparent_hugepage/defrag
+```
+
+## fio
+
+```bash
+git clone git@github.com:axboe/fio.git
+cd fio
+CC=musl-gcc ./configure --prefix=/usr/local/musl/ --disable-numa
+make -j128 && make install
+```
+
+```bash
+benshan@public-Super-Server:~/vmpl-process/vmpl-bench/apps/fio$ fio --version
+```
