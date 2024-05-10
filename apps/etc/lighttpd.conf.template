@@ -2,9 +2,9 @@
 ## Basic lighttpd configuration.
 ##
 server.document-root        = "/var/www/html"
-server.port                 = 8000
-server.username             = "usrname"
-server.groupname            = "grpname"
+server.port                 = 8004
+## server.username             = "usrname"
+## server.groupname            = "grpname"
 index-file.names            = ( "index.php", "index.html", "index.lighttpd.html" )
 
 ##

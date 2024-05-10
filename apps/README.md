@@ -101,6 +101,41 @@ ulimit -n 10000
 ab -n 10000 -c 1300 http://localhost:18888
 ```
 
+```bash
+$ ./http_load -parallel 10 -fetches 1000 -verbose ./url_file
+1000 fetches, 10 max parallel, 2.048e+07 bytes, in 1.86226 seconds
+20480 mean bytes/connection
+536.981 fetches/sec, 1.09974e+07 bytes/sec
+msecs/connect: 8.1722 mean, 1016.29 max, 0.025 min
+msecs/first-response: 3.3992 mean, 845.166 max, 0.26 min
+HTTP response codes:
+  code 200 -- 1000
+$ ./http_load -parallel 10 -fetches 2000 -verbose ./url_file
+2000 fetches, 10 max parallel, 4.096e+07 bytes, in 1.21254 seconds
+20480 mean bytes/connection
+1649.42 fetches/sec, 3.37802e+07 bytes/sec
+msecs/connect: 3.58719 mean, 1026.01 max, 0.024 min
+msecs/first-response: 0.918671 mean, 209.1 max, 0.329 min
+HTTP response codes:
+  code 200 -- 2000
+$ ./http_load -parallel 10 -fetches 3000 -verbose ./url_file
+3000 fetches, 10 max parallel, 6.144e+07 bytes, in 2.02927 seconds
+20480 mean bytes/connection
+1478.37 fetches/sec, 3.02769e+07 bytes/sec
+msecs/connect: 3.05522 mean, 1008.16 max, 0.017 min
+msecs/first-response: 0.856092 mean, 416.925 max, 0.154 min
+HTTP response codes:
+  code 200 -- 3000
+./http_load -parallel 10 -fetches 4000 -verbose ./url_file
+4000 fetches, 10 max parallel, 8.192e+07 bytes, in 2.23571 seconds
+20480 mean bytes/connection
+1789.14 fetches/sec, 3.66415e+07 bytes/sec
+msecs/connect: 2.84169 mean, 1026.72 max, 0.02 min
+msecs/first-response: 0.903565 mean, 416.552 max, 0.215 min
+HTTP response codes:
+  code 200 -- 4000
+```
+
 ## proftpd
 
 ```bash
@@ -1119,4 +1154,240 @@ make -j128 && make install
 
 ```bash
 benshan@public-Super-Server:~/vmpl-process/vmpl-bench/apps/fio$ fio --version
+```
+
+## SGXGauge-Benchmark
+
+### pte-hashjoin-vanilla
+
+```bash
+$ pushd pte-hashjoin-vanilla
+$ make all CC=musl-gcc WORKLOAD_TYPE=LOW_
+$ bin/bench_hashjoin_st
+Hashsize using the para s is 100000 
+Hashtable Size: 781KB
+Datatable Size Size: 61MB
+Element Size: 1 MB
+Total: 75 MB
+allocating 0 MB memory with alignment 64 
+allocating 1 MB memory with alignment 2097152 
+allocating 61 MB memory with alignment 2097152 
+got 25000000 matches / 100000 matches per iteration of 1000000 
+Experiment DONE with hashtable conflicts = 36777
+SECUREFS_TIME 6551253 us
+$ make all CC=musl-gcc WORKLOAD_TYPE=MEDIUM_
+$ bin/bench_hashjoin_st
+Hashsize using the para s is 100000 
+Hashtable Size: 781KB
+Datatable Size Size: 91MB
+Element Size: 1 MB
+Total: 106 MB
+allocating 0 MB memory with alignment 64 
+allocating 1 MB memory with alignment 2097152 
+allocating 91 MB memory with alignment 2097152 
+got 25000000 matches / 100000 matches per iteration of 1500000 
+Experiment DONE with hashtable conflicts = 36777
+SECUREFS_TIME 9781766 us
+$ make all CC=musl-gcc WORKLOAD_TYPE=HIGH_
+$ bin/bench_hashjoin_st
+Hashsize using the para s is 100000 
+Hashtable Size: 781KB
+Datatable Size Size: 122MB
+Element Size: 1 MB
+Total: 136 MB
+allocating 0 MB memory with alignment 64 
+allocating 1 MB memory with alignment 2097152 
+allocating 122 MB memory with alignment 2097152 
+got 25000000 matches / 100000 matches per iteration of 2000000 
+Experiment DONE with hashtable conflicts = 36777
+SECUREFS_TIME 13216282 us
+benshan@sev-snp-guest:~/vmpl-process/vmpl-bench/apps/SGXGauge-Benchmark/pte-hashjoin-vanilla$ bin/bench_hashjoin_st 
+Hashsize using the para s is 100000 
+Hashtable Size: 781KB
+Datatable Size Size: 91MB
+Element Size: 1 MB
+Total: 106 MB
+allocating 0 MB memory with alignment 64 
+allocating 1 MB memory with alignment 2097152 
+allocating 91 MB memory with alignment 2097152 
+got 25000000 matches / 100000 matches per iteration of 1500000 
+Experiment DONE with hashtable conflicts = 36777
+SECUREFS_TIME 9366330 us
+benshan@sev-snp-guest:~/vmpl-process/vmpl-bench/apps/SGXGauge-Benchmark/pte-hashjoin-vanilla$ 
+$ popd
+```
+
+### pte-btree-vanilla
+
+```bash
+$ pushd pte-btree-vanilla
+$ make all CC=musl-gcc
+$ bin/bench_btree_st 
+Allocated 99108864
+BTree Elements: 1548576
+Btree Fanout: 6
+Allocator: 96 MB
+got 756 matches in 10 seconds
+Experiment DONE
+SECUREFS_TIME 9857793 us
+Total time: 10.18446744073709551474
+benshan@sev-snp-guest:~/vmpl-process/vmpl-bench/apps/SGXGauge-Benchmark/pte-btree-vanilla$ bin/bench_btree_st
+Allocated 99108864
+BTree Elements: 1548576
+Btree Fanout: 6
+Allocator: 96 MB
+got 756 matches in 9 seconds
+Experiment DONE
+SECUREFS_TIME 9984028 us
+Total time: 10.18446744073709551601
+```
+
+### pagerank-2-vanilla
+
+```bash
+$ popd
+$ pushd pagerank-2-vanilla
+$ mkdir -p bin
+$ make all CC=musl-gcc
+$ bin/page_gen
+Number of Page Relations: 12495245
+Number of Pages: 5000
+The file is generated at pages_high.dat
+$ bin/pagerank
+nb of links: 5000/25000000
+links checksum: 14235
+T reached 4 at max dif 0.000000
+{ "status": 1, "output": 34426 }
+SECUREFS_TIME 1357271 us
+$ bin/bench_pagerank_st
+$ popd
+```
+
+### openssl-vanilla
+
+```bash
+$ pushd openssl-vanilla
+$ make all CC=musl-gcc
+$ ./encrypt
+
+$ popd
+# 
+```
+
+## tlsbm
+
+```bash
+cmake -DCMAKE_C_COMPILER=musl-gcc -DCMAKE_INSTALL_PREFIX=/usr/local/musl -DCMAKE_SYSTEM_NAME=Linux ..
+make all -j128
+```
+
+## thttpd
+
+[tHttpd](https://calomel.org/thttpd.html)
+
+```bash
+
+```
+
+### http_load
+
+```bash
+$ echo "http://localhost:8001/index.html" > url_file
+$ ./http_load -rate 5 -seconds 10 -verbose ./url_file
+49 fetches, 1 max parallel, 15239 bytes, in 10.0163 seconds
+311 mean bytes/connection
+4.89202 fetches/sec, 1521.42 bytes/sec
+msecs/connect: 19.6239 mean, 30.218 max, 15.872 min
+msecs/first-response: 17.0269 mean, 26.752 max, 14.374 min
+HTTP response codes:
+  code 200 -- 49
+./http_load -parallel 100 -fetches 1000000 -verbose ./url_file 
+1000000 fetches, 100 max parallel, 3.11e+08 bytes, in 44.2562 seconds
+311 mean bytes/connection
+22595.7 fetches/sec, 7.02726e+06 bytes/sec
+msecs/connect: 0.118608 mean, 14.329 max, 0.012 min
+msecs/first-response: 1.41628 mean, 26.7 max, 0.157 min
+HTTP response codes:
+  code 200 -- 1000000
+./http_load -parallel 90 -fetches 1000000 -verbose ./url_file
+1000000 fetches, 90 max parallel, 3.11e+08 bytes, in 44.5174 seconds
+311 mean bytes/connection
+22463.1 fetches/sec, 6.98604e+06 bytes/sec
+msecs/connect: 0.119785 mean, 34.527 max, 0.011 min
+msecs/first-response: 1.36707 mean, 169.23 max, 0.193 min
+HTTP response codes:
+  code 200 -- 1000000
+```
+
+```bash
+benshan@public-Super-Server:~/vmpl-process/vmpl-bench/apps$ ./scripts/run-http_load.sh 
+~/vmpl-process/vmpl-bench/apps/http_load-09Mar2016 ~/vmpl-process/vmpl-bench/apps
+10000 fetches, 1 max parallel, 0 bytes, in 1.49107 seconds
+0 mean bytes/connection
+6706.61 fetches/sec, 0 bytes/sec
+msecs/connect: 0.0341036 mean, 2.953 max, 0.022 min
+msecs/first-response: 0.115003 mean, 3.028 max, 0.048 min
+HTTP response codes:
+10000 fetches, 1 max parallel, 0 bytes, in 1.48902 seconds
+0 mean bytes/connection
+6715.83 fetches/sec, 0 bytes/sec
+msecs/connect: 0.0277251 mean, 0.911 max, 0.02 min
+msecs/first-response: 0.121177 mean, 4.047 max, 0.042 min
+HTTP response codes:
+10000 fetches, 1 max parallel, 0 bytes, in 1.489 seconds
+0 mean bytes/connection
+6715.91 fetches/sec, 0 bytes/sec
+msecs/connect: 0.0272433 mean, 0.831 max, 0.021 min
+msecs/first-response: 0.121657 mean, 4.006 max, 0.045 min
+HTTP response codes:
+10000 fetches, 1 max parallel, 0 bytes, in 1.49795 seconds
+0 mean bytes/connection
+6675.79 fetches/sec, 0 bytes/sec
+msecs/connect: 0.0293703 mean, 1.007 max, 0.021 min
+msecs/first-response: 0.120425 mean, 3.524 max, 0.039 min
+HTTP response codes:
+10000 fetches, 1 max parallel, 0 bytes, in 1.49165 seconds
+0 mean bytes/connection
+6703.98 fetches/sec, 0 bytes/sec
+msecs/connect: 0.0300965 mean, 4.076 max, 0.021 min
+msecs/first-response: 0.119069 mean, 3.052 max, 0.03 min
+HTTP response codes:
+10000 fetches, 1 max parallel, 0 bytes, in 1.4855 seconds
+0 mean bytes/connection
+6731.72 fetches/sec, 0 bytes/sec
+msecs/connect: 0.0281702 mean, 0.954 max, 0.021 min
+msecs/first-response: 0.12038 mean, 5.892 max, 0.047 min
+HTTP response codes:
+10000 fetches, 1 max parallel, 0 bytes, in 1.49411 seconds
+0 mean bytes/connection
+6692.95 fetches/sec, 0 bytes/sec
+msecs/connect: 0.0283749 mean, 0.705 max, 0.021 min
+msecs/first-response: 0.121036 mean, 5.297 max, 0.044 min
+HTTP response codes:
+10000 fetches, 1 max parallel, 0 bytes, in 1.48791 seconds
+0 mean bytes/connection
+6720.86 fetches/sec, 0 bytes/sec
+msecs/connect: 0.0276486 mean, 2.673 max, 0.021 min
+msecs/first-response: 0.121142 mean, 2.909 max, 0.047 min
+HTTP response codes:
+10000 fetches, 1 max parallel, 0 bytes, in 1.49308 seconds
+0 mean bytes/connection
+6697.55 fetches/sec, 0 bytes/sec
+msecs/connect: 0.0301585 mean, 4.059 max, 0.021 min
+msecs/first-response: 0.11915 mean, 3.55 max, 0.021 min
+HTTP response codes:
+10000 fetches, 1 max parallel, 0 bytes, in 1.49659 seconds
+0 mean bytes/connection
+6681.84 fetches/sec, 0 bytes/sec
+msecs/connect: 0.0306619 mean, 1.349 max, 0.021 min
+msecs/first-response: 0.118997 mean, 4.444 max, 0.044 min
+HTTP response codes:
+10000 fetches, 1 max parallel, 0 bytes, in 1.47816 seconds
+0 mean bytes/connection
+6765.19 fetches/sec, 0 bytes/sec
+msecs/connect: 0.0274923 mean, 0.696 max, 0.021 min
+msecs/first-response: 0.120323 mean, 4.633 max, 0.033 min
+HTTP response codes:
+~/vmpl-process/vmpl-bench/apps
+benshan@public-Super-Server:~/vmpl-process/vmpl-bench/apps$ 
 ```

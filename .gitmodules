@@ -79,3 +79,6 @@
 [submodule "apps/SGX-OpenSSL"]
 	path = apps/SGX-OpenSSL
 	url = git@github.com:sparkly9399/SGX-OpenSSL.git
+[submodule "apps/tls-perf"]
+	path = apps/tls-perf
+	url = git@github.com:tempesta-tech/tls-perf.git

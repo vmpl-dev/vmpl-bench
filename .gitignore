@@ -5,6 +5,11 @@
 *.d
 *.dat
 *.txt
+*.pdf
+*.csv
+*.zip
+*.tar
+*.tar.*
 .dirstamp
 .deps
 .libs
