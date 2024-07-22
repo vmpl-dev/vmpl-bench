@@ -82,3 +82,9 @@
 [submodule "apps/tls-perf"]
 	path = apps/tls-perf
 	url = git@github.com:tempesta-tech/tls-perf.git
+[submodule "apps/SGXGauge-Benchmark"]
+	path = apps/SGXGauge-Benchmark
+	url = git@github.com:sandeep007734/SGXGauge-Benchmark.git
+[submodule "bench/XSBench"]
+	path = bench/XSBench
+	url = git@github.com:ANL-CESAR/XSBench.git
