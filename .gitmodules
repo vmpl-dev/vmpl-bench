@@ -2,19 +2,19 @@
 	path = bench/syscall/syscall_benchmark
 	url = git@github.com:saadislamm/syscall_benchmark.git
 [submodule "ipc-bench"]
-	path = bench/ipc-bench
+	path = bench/rigtorp/ipc-bench
 	url = git@github.com:rigtorp/ipc-bench.git
 [submodule "nbench"]
-	path = bench/nbench
+	path = bench/toshsan/nbench
 	url = git@github.com:toshsan/nbench.git
 [submodule "byte-unixbench"]
-	path = bench/unixbench
+	path = bench/kdlucas/unixbench
 	url = git@github.com:kdlucas/byte-unixbench.git
 [submodule "lmbench"]
-	path = bench/lmbench
+	path = bench/intel/lmbench
 	url = git@github.com:intel/lmbench.git
 [submodule "tls-perf"]
-	path = bench/tls-perf
+	path = bench/tempesta-tech/tls-perf
 	url = git@github.com:tempesta-tech/tls-perf.git
 [submodule "lighttpd1.4"]
 	path = apps/lighttpd
@@ -35,7 +35,7 @@
 	path = bench/spec/speccpu2006
 	url = git@github.com:hubzhangxj/speccpu2006.git
 [submodule "bench/sysbench"]
-	path = bench/sysbench
+	path = bench/akopytov/sysbench
 	url = git@github.com:akopytov/sysbench.git
 [submodule "apps/httpd"]
 	path = apps/httpd
@@ -68,7 +68,7 @@
 	path = apps/wolfssl-examples
 	url = git@github.com:wolfSSL/wolfssl-examples.git
 [submodule "bench/siege"]
-	path = bench/siege
+	path = bench/JoeDog/siege
 	url = git@github.com:JoeDog/siege.git
 [submodule "apps/beanstalkd"]
 	path = apps/beanstalkd
@@ -86,5 +86,8 @@
 	path = apps/SGXGauge-Benchmark
 	url = git@github.com:sandeep007734/SGXGauge-Benchmark.git
 [submodule "bench/XSBench"]
-	path = bench/XSBench
+	path = bench/ANL-CESAR/XSBench
 	url = git@github.com:ANL-CESAR/XSBench.git
+[submodule "bench/RedisLabs/memtier_benchmark"]
+	path = bench/RedisLabs/memtier_benchmark
+	url = https://github.com/RedisLabs/memtier_benchmark.git
